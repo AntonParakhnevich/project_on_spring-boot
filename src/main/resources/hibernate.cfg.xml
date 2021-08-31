@@ -21,14 +21,14 @@
         </property>
         <property name="hibernate.hbm2ddl.auto">update</property>
 
-        <mapping class="com.example.budjet_spring.Entity.Budget"/>
-        <mapping class="com.example.budjet_spring.Entity.CategoryCost"/>
-        <mapping class="com.example.budjet_spring.Entity.Expenses"/>
-        <mapping class="com.example.budjet_spring.Entity.Family"/>
-        <mapping class="com.example.budjet_spring.Entity.Month"/>
-        <mapping class="com.example.budjet_spring.Entity.CategoryIncome"/>
-        <mapping class="com.example.budjet_spring.Entity.Income"/>
-        <mapping class="com.example.budjet_spring.Entity.Year"/>
+        <mapping class="com.example.budjet_spring.entity.Budget"/>
+        <mapping class="com.example.budjet_spring.entity.CategoryCost"/>
+        <mapping class="com.example.budjet_spring.entity.Expenses"/>
+        <mapping class="com.example.budjet_spring.entity.Family"/>
+        <mapping class="com.example.budjet_spring.entity.Month"/>
+        <mapping class="com.example.budjet_spring.entity.CategoryIncome"/>
+        <mapping class="com.example.budjet_spring.entity.Income"/>
+        <mapping class="com.example.budjet_spring.entity.Year"/>
 
     </session-factory>
 </hibernate-configuration>

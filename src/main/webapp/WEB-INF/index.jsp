@@ -1,23 +1,22 @@
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8" %>
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-
-<c:set var="language"
-       value="${sessionScope.languages}"
-       scope="session"/>
-<fmt:setLocale value="${language}"/>
-<fmt:setBundle basename="translations"/>
+<%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
 <!DOCTYPE html>
-<html lang="${language}">
-<html>
 <head>
     <title>JSP - Hello World</title>
 </head>
 <body>
-<p><fmt:message key="login"/>: ${family.login}</p>
-<p><fmt:message key="accumulations"/>: ${totalAccumulation}</p>
-<p></p>
-<p><fmt:message key="years"/>:</p>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a href="${pageContext.request.contextPath}/index?language=en_US">Login (English)</a>
+    &nbsp;|&nbsp;
+    <a href="${pageContext.request.contextPath}/index?language=ru_RU">Login (Rus)</a>
+    &nbsp;|&nbsp;
+</div>
+
+<p><spring:message code="login"/>: ${family.login}</p>
+<p><spring:message code="accumulations"/>: ${totalAccumulation}</p>
+<p><spring:message code="years"/>:</p>
 <c:forEach items="${years}" var="year">
     <tr>
         <th>
@@ -26,10 +25,14 @@
     </tr>
 </c:forEach>
 
+<c:if test="${roles.contains('admin')}">
+    <a href="${pageContext.request.contextPath}/allFamily">All family</a>
+</c:if>
+
 <p>
-    <a href="createYear"><fmt:message key="create"/></a>
-    <a href="calculate"><fmt:message key="calculation"/></a>
-    <a href="logout"><fmt:message key="logout"/></a>
+    <a href="createYear"><spring:message code="create"/></a>
+    <a href="calculate"><spring:message code="calculation"/></a>
+    <a href="logout"><spring:message code="logout"/></a>
 </p>
 </body>
 </html>
