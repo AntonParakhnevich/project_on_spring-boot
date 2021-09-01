@@ -5,23 +5,27 @@
 <html>
 <head>
     <title>Start</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
 
-<div class="form">
-    <h1><fmt:message key="Authorization"/></h1><br>
-    <form method="post" action="">
-
-        <input type="text" required placeholder="<fmt:message key="login"/>" name="login"><br>
-        <input type="password" required placeholder="<fmt:message key="password"/>" name="password"><br>
-        <input class="button" type="submit" value="<fmt:message key="loginInSystem"/>">
-
-    </form>
-
-    <form method="get" action='<c:url value="registration"/>' style="display:inline;">
-        <input type="submit" value="<fmt:message key="registration"/>">
-    </form>
+<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
+    <a class="btn2" href="${pageContext.request.contextPath}/start?language=en_US"><span>Eng</span></a>
+    <a class="btn2" href="${pageContext.request.contextPath}/start?language=ru_RU"><span>Rus</span></a>
 </div>
+
+<form action="${pageContext.request.contextPath}/checkUser" method="post" class="text-centre">
+
+    <div class="container">
+        <label><b>Username</b></label>
+        <input type="text" required placeholder="<spring:message code="login"/>" id="login" name="username"><br>
+
+        <label><b>Password</b></label>
+        <input type="password" required placeholder="<spring:message code="password"/>" name="password"><br>
+
+        <input class="button" type="submit" value="<spring:message code="loginInSystem"/>">
+    </div>
+</form>
 
 </body>
 </html>

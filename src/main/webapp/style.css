@@ -1,0 +1,121 @@
+.btn2 {
+    display: inline-block;
+    box-sizing: border-box;
+    padding: 1px;
+    margin: 0 15px 15px 0;
+    outline: none;
+    border: 1px solid #F18230;
+    border-radius: 25px;
+    height: 46px;
+    line-height: 0;
+    font-size: 14px;
+    font-weight: 500;
+    text-decoration: none;
+    color: #fff;
+    background-color: #fff;
+    position: relative;
+    overflow: hidden;
+    vertical-align: top;
+    cursor: pointer;
+    user-select: none;
+    appearance: none;
+    touch-action: manipulation;
+}
+.btn2 span {
+    display: block;
+    box-sizing: border-box;
+    padding: 0 25px;
+    height: 42px;
+    line-height: 38px;
+    border: 1px solid #F18230;
+    border-radius: 25px;
+    font-size: 14px;
+    color: #FFFFFF;
+    background: linear-gradient(180deg, rgba(255, 255, 255, 0.25) 0%, rgba(255, 255, 255, 0) 100%), #F18230;
+    text-align: center;
+    font-weight: 600;
+}
+.btn2:focus-visible {
+    box-shadow: 0 0 0 3px lightskyblue;
+}
+.btn2:hover span {
+    background-color: #fba768
+}
+.btn2:active span {
+    background-color: #c17237 !important;
+}
+.btn2:disabled {
+    opacity: 0.65;
+    pointer-events: none;
+}
+
+
+
+
+
+
+
+form {
+    border: 3px solid #f1f1f1;
+}
+
+/* Full-width inputs */
+input[type=text], input[type=password] {
+    width: 100%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    box-sizing: border-box;
+}
+
+/* Set a style for all buttons */
+.button {
+    background-color: #4CAF50;
+    color: white;
+    padding: 14px 20px;
+    margin: 8px 0;
+    border: none;
+    cursor: pointer;
+    width: 100%;
+}
+
+/* Add a hover effect for buttons */
+.button:hover {
+    opacity: 0.8;
+}
+
+/* Extra style for the cancel button (red) */
+.btn {
+    width: auto;
+    padding: 10px 18px;
+    background-color: #f44336;
+}
+
+/* Avatar image */
+img.avatar {
+    width: 40%;
+    border-radius: 50%;
+}
+
+/* Add padding to containers */
+.container {
+    padding: 16px;
+}
+
+/* The "Forgot password" text */
+span.psw {
+    float: right;
+    padding-top: 16px;
+}
+
+/* Change styles for span and cancel button on extra small screens */
+@media screen and (max-width: 300px) {
+    span.psw {
+        display: block;
+        float: none;
+    }
+    .btn {
+        width: 100%;
+    }
+}

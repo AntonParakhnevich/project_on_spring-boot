@@ -2,18 +2,17 @@
 <%@ taglib uri="http://java.sun.com/jsp/jstl/core" prefix="c" %>
 <%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
 <%@ taglib prefix="spring" uri="http://www.springframework.org/tags" %>
-<c:set var="language"
-       value="${sessionScope.language}"
-       scope="session"/>
-<fmt:setLocale value="${language}"/>
-<fmt:setBundle basename="translations"/>
 <html>
+<head>
+    <title>Calculate</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+</head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a href="${pageContext.request.contextPath}/registration?language=en_US">Login (English)</a>
-    &nbsp;|&nbsp;
-    <a href="${pageContext.request.contextPath}/registration?language=ru_RU">Login (Rus)</a>
-    &nbsp;|&nbsp;
+    <a class="btn2" href="${pageContext.request.contextPath}/registration?language=en_US"><span>Eng</span></a>
+
+    <a class="btn2" href="${pageContext.request.contextPath}/registration?language=ru_RU"><span>Rus</span></a>
+
 </div>
 <h3><spring:message code="registration"/></h3>
 <form method="post">

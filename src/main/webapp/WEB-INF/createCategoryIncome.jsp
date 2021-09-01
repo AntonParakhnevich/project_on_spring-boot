@@ -5,9 +5,9 @@
 <html>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a href="${pageContext.request.contextPath}/createIncome?language=en_US">Login (English)</a>
+    <a href="${pageContext.request.contextPath}/createIncome?language=en_US"><span>Eng</span></a>
     &nbsp;|&nbsp;
-    <a href="${pageContext.request.contextPath}/createIncome?language=ru_RU">Login (Rus)</a>
+    <a href="${pageContext.request.contextPath}/createIncome?language=ru_RU"><span>Rus</span></a>
     &nbsp;|&nbsp;
 </div>
 <h3><spring:message code="newCategoryIncome"/></h3>

@@ -16,6 +16,7 @@ import org.springframework.web.servlet.ModelAndView;
 
 import javax.servlet.http.HttpSession;
 import java.time.YearMonth;
+import java.util.List;
 
 /**
  * Created by .
@@ -81,6 +82,7 @@ public class BudgetController {
 
     @GetMapping ("/allFamily")
     public ModelAndView getAllFamily(ModelAndView modelAndView){
+        List<Family> all = familyService.findAll();
         modelAndView.addObject("AllFamily",familyService.findAll());
         modelAndView.setViewName("/allFamily");
         return modelAndView;

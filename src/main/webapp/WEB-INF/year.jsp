@@ -6,13 +6,15 @@
 <html>
 <head>
     <title>JSP - Hello World</title>
+    <link rel="stylesheet" type="text/css" href="../style.css">
+
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a href="${pageContext.request.contextPath}/year?language=en_US&year=${year}">Login (English)</a>
-    &nbsp;|&nbsp;
-    <a href="${pageContext.request.contextPath}/year?language=ru_RU&year=${year}">Login (Rus)</a>
-    &nbsp;|&nbsp;
+    <a class="btn2" href="${pageContext.request.contextPath}/year?language=en_US&year=${year}"><span>Eng</span></a>
+
+    <a class="btn2" href="${pageContext.request.contextPath}/year?language=ru_RU&year=${year}"><span>Rus</span></a>
+
 </div>
 <table>
     <tr>
@@ -25,7 +27,8 @@
     <c:forEach items="${months}" var="month">
     <tr>
         <th>
-            <a href="${pageContext.request.contextPath}/month?idMonth=${month.id}&year=${year}"><spring:message code="${month.name}"/></a>
+            <a href="${pageContext.request.contextPath}/month?idMonth=${month.id}&year=${year}"><spring:message
+                    code="${month.name}"/></a>
         </th>
         <th>${month.income.calculationTotalIncome()}</th>
         <th>${month.expenses.calculationTotalExpenses()}</th>
