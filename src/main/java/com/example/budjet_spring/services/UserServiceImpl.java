@@ -4,7 +4,6 @@ import com.example.budjet_spring.entity.Family;
 import com.example.budjet_spring.entity.Role;
 import com.example.budjet_spring.repositories.FamilyRepository;
 import lombok.RequiredArgsConstructor;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
@@ -14,7 +13,6 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.Collection;
-import java.util.Collections;
 import java.util.Set;
 import java.util.stream.Collectors;
 
@@ -30,7 +28,6 @@ public class UserServiceImpl implements UserService {
 
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        System.out.println(username);
         Family family = familyRepository.findByLogin(username);
         if (family == null) {
             throw new UsernameNotFoundException("User not found");

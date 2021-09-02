@@ -22,9 +22,10 @@
     <label><fmt:message key="password"/></label><br>
     <input type="text" required placeholder="<spring:message code="password"/>" name="password"><br>
 
-    <input type="submit" value="<spring:message code="registration"/>"/>
+    <input class="button" type="submit" value="<spring:message code="registration"/>"/>
 
-    <a href="start" style="display: inline"><spring:message code="back"/></a>
+    <a href="start" class="button"><spring:message code="back"/></a>
 </form>
+
 </body>
 </html>

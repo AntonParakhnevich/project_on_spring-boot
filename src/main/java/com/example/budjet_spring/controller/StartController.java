@@ -18,6 +18,7 @@ import org.springframework.web.servlet.ModelAndView;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Set;
+import java.util.stream.Collectors;
 
 /**
  * Created by .
@@ -31,7 +32,7 @@ public class StartController {
     private final FamilyServiceImpl familyService;
     private final YearServiceImpl yearService;
 
-    @GetMapping("/start")
+    @GetMapping({"/start","/"})
     public String start() {
         return "start";
     }
@@ -41,33 +42,12 @@ public class StartController {
         return new Family();
     }
 
-//    @PostMapping("/start")
-//    public ModelAndView login(@RequestParam String login,
-//                              @RequestParam String password,
-//                              @ModelAttribute("family") Family fam,
-//                              ModelAndView modelAndView) {
-//        if (familyService.getByLoginAndPassword(login, password) != null) {
-//            fam = familyService.getByLoginAndPassword(login, password);
-//            modelAndView.addObject("family", fam);
-//            modelAndView.addObject("years", yearService.getAllYear(fam.getBudget().getId()));
-//            modelAndView.setViewName("index");
-//        } else {
-//            modelAndView.setViewName("start");
-//        }
-//        return modelAndView;
-//    }
-
     @GetMapping("/startProgram")
     public ModelAndView getStartProgram(@ModelAttribute("family") Family fam,
                                         ModelAndView modelAndView) {
         fam = familyService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
 
-        List<String> namesRole=new ArrayList<>();
-        Set<Role> roles = fam.getRoles();
-        for (Role r: roles){
-            namesRole.add(r.getName());
-        }
-
+        List<String> namesRole = fam.getRoles().stream().map(role -> role.getName()).collect(Collectors.toList());
 
         modelAndView.addObject("family", fam);
         modelAndView.addObject("roles", namesRole);

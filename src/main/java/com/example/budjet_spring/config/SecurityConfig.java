@@ -30,8 +30,6 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                         "/createCategoryIncome","/createMonth","/createYear",
                         "/month","/year")
                 .authenticated()
-//                .antMatchers("/calculate")
-//                .hasAuthority("admin")
                 .anyRequest()
                 .permitAll()
                 .and()

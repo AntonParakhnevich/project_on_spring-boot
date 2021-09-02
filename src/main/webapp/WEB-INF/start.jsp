@@ -17,14 +17,24 @@
 <form action="${pageContext.request.contextPath}/checkUser" method="post" class="text-centre">
 
     <div class="container">
-        <label><b>Username</b></label>
+        <form method="post" action="">
+
+        <label><b><fmt:message key="login"/></b></label>
         <input type="text" required placeholder="<spring:message code="login"/>" id="login" name="username"><br>
 
-        <label><b>Password</b></label>
+        <label><b><fmt:message key="password"/></b></label>
         <input type="password" required placeholder="<spring:message code="password"/>" name="password"><br>
 
         <input class="button" type="submit" value="<spring:message code="loginInSystem"/>">
+        </form>
+        <form method="get" action='<c:url value="registration"/>' style="display:inline;">
+            <input class="button" type="submit" value="<fmt:message key="registration"/>">
+        </form>
     </div>
+
+
+
+
 </form>
 
 </body>

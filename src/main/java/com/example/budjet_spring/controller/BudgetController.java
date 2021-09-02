@@ -49,6 +49,7 @@ public class BudgetController {
     public ModelAndView getIndex(@ModelAttribute("family") Family family,
                                  ModelAndView modelAndView) {
         Budget budget = family.getBudget();
+        System.out.println(budget.getId());
         modelAndView.addObject("totalAccumulation",budgetService.getTotalAccumulation(budget.getId()));
         modelAndView.addObject("years", yearService.getAllYear(family.getBudget().getId()));
         modelAndView.setViewName("index");
@@ -80,11 +81,11 @@ public class BudgetController {
         return modelAndView;
     }
 
-    @GetMapping ("/allFamily")
-    public ModelAndView getAllFamily(ModelAndView modelAndView){
-        List<Family> all = familyService.findAll();
-        modelAndView.addObject("AllFamily",familyService.findAll());
-        modelAndView.setViewName("/allFamily");
-        return modelAndView;
-    }
+//    @GetMapping ("/allFamily")
+//    public ModelAndView getAllFamily(ModelAndView modelAndView){
+//        List<Family> all = familyService.findAll();
+//        modelAndView.addObject("AllFamily",familyService.findAll());
+//        modelAndView.setViewName("/allFamily");
+//        return modelAndView;
+//    }
 }

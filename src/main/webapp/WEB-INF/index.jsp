@@ -13,6 +13,7 @@
     <a class="btn2" href="${pageContext.request.contextPath}/index?language=en_US"><span>Eng</span></a>
 
     <a class="btn2" href="${pageContext.request.contextPath}/index?language=ru_RU"><span>Rus</span></a>
+    <a class="btn2" href="${pageContext.request.contextPath}/logout"><span><spring:message code="logout"/></span></a>
 
 </div>
 
@@ -34,7 +35,5 @@
 <p>
     <a href="createYear"><spring:message code="create"/></a>
     <a href="calculate"><spring:message code="calculation"/></a>
-    <a href="logout"><spring:message code="logout"/></a>
 </p>
 </body>
-</html>

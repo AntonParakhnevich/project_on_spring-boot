@@ -1,5 +1,6 @@
 package com.example.budjet_spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.EqualsAndHashCode;
@@ -47,6 +48,7 @@ public class Family implements Serializable {
     private String password;
 
     @OneToOne(mappedBy = "family",cascade = CascadeType.ALL)
+    @JsonIgnore
     private Budget budget;
 
     @ManyToMany(cascade = CascadeType.PERSIST, fetch = FetchType.LAZY)

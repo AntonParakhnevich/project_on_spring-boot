@@ -1,5 +1,6 @@
 package com.example.budjet_spring.entity;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
@@ -43,6 +44,7 @@ public class Year implements Serializable {
 
     @ManyToOne(cascade = CascadeType.PERSIST)
     @JoinColumn(name = "budget_id")
+    @JsonIgnore
     private Budget budget;
 
     @OneToMany(mappedBy = "year", cascade = CascadeType.ALL,fetch = FetchType.LAZY)
