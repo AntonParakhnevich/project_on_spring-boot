@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * Created by .
  */
 @Service
-public interface FamilyService  {
+public interface FamilyService {
     Family getByLoginAndPassword(String login, String password);
 
     void registration(String login, String password);

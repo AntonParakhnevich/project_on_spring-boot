@@ -32,7 +32,7 @@ public class StartController {
     private final FamilyServiceImpl familyService;
     private final YearServiceImpl yearService;
 
-    @GetMapping({"/start","/"})
+    @GetMapping({"/start", "/"})
     public String start() {
         return "start";
     }
@@ -46,16 +46,10 @@ public class StartController {
     public ModelAndView getStartProgram(@ModelAttribute("family") Family fam,
                                         ModelAndView modelAndView) {
         fam = familyService.findByLogin(SecurityContextHolder.getContext().getAuthentication().getName());
-
-        List<String> namesRole = fam.getRoles().stream().map(role -> role.getName()).collect(Collectors.toList());
-
         modelAndView.addObject("family", fam);
-        modelAndView.addObject("roles", namesRole);
         modelAndView.addObject("years", yearService.getAllYear(fam.getBudget().getId()));
+        modelAndView.addObject("totalAccumulation",fam.getBudget().calculationTotalAccumulation());
         modelAndView.setViewName("index");
-        SecurityContextHolder.getContext().getAuthentication().getAuthorities().stream()
-                .map(String::valueOf)
-                .forEach(fam::addRole);
         return modelAndView;
     }
 

@@ -64,7 +64,10 @@ public class Budget implements Serializable {
                 System.out.println(total);
             }
         }
-        return total;
+        if(total<0) {
+            return 0;
+        }
+        else return total;
     }
 
 }

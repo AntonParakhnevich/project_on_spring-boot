@@ -1,5 +1,6 @@
 package com.example.budjet_spring.controller;
 
+import com.example.budjet_spring.DTO.FamilyDTO;
 import com.example.budjet_spring.entity.Family;
 import com.example.budjet_spring.services.RestService;
 import lombok.RequiredArgsConstructor;
@@ -15,8 +16,8 @@ import java.util.List;
 public class RestController {
     private final RestService restService;
 
-    @GetMapping ("/allFamily")
-    public List<Family> getAllFamily(){
+    @GetMapping("/allFamily")
+    public List<FamilyDTO> getAllFamily() {
         return restService.getAllFamily();
     }
 }

@@ -1,5 +1,6 @@
 package com.example.budjet_spring.services;
 
+import com.example.budjet_spring.DTO.FamilyDTO;
 import com.example.budjet_spring.entity.Family;
 
 import java.util.List;
@@ -9,5 +10,5 @@ import java.util.List;
  */
 public interface RestService {
 
-    List<Family> getAllFamily();
+    List<FamilyDTO> getAllFamily();
 }

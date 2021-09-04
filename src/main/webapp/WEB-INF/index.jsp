@@ -28,10 +28,11 @@
     </tr>
 </c:forEach>
 
-<c:if test="${roles.contains('admin')}">
-    <a href="${pageContext.request.contextPath}/allFamily">All family</a>
-</c:if>
-
+<c:forEach items="${family.roles}" var="role">
+    <c:if test="${role.name.equals('admin')}">
+        <a href="${pageContext.request.contextPath}/allFamily">All family</a>
+    </c:if>
+</c:forEach>
 <p>
     <a href="createYear"><spring:message code="create"/></a>
     <a href="calculate"><spring:message code="calculation"/></a>

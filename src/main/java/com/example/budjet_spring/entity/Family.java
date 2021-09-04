@@ -47,7 +47,7 @@ public class Family implements Serializable {
     @Column
     private String password;
 
-    @OneToOne(mappedBy = "family",cascade = CascadeType.ALL)
+    @OneToOne(mappedBy = "family",cascade = CascadeType.ALL,fetch = FetchType.EAGER)
     @JsonIgnore
     private Budget budget;
 

@@ -28,11 +28,9 @@ public class BudgetController {
 
     private final BudgetServiceImpl budgetService;
     private final YearServiceImpl yearService;
-    private  final FamilyServiceImpl familyService;
 
     @GetMapping("/createYear")
     public ModelAndView addYearGet(ModelAndView modelAndView) {
-
         modelAndView.addObject("maxYear", YearMonth.now().getYear());
         modelAndView.setViewName("createYear");
         return modelAndView;
@@ -48,9 +46,7 @@ public class BudgetController {
     @GetMapping("/index")
     public ModelAndView getIndex(@ModelAttribute("family") Family family,
                                  ModelAndView modelAndView) {
-        Budget budget = family.getBudget();
-        System.out.println(budget.getId());
-        modelAndView.addObject("totalAccumulation",budgetService.getTotalAccumulation(budget.getId()));
+        modelAndView.addObject("totalAccumulation",budgetService.getTotalAccumulation(family.getBudget().getId()));
         modelAndView.addObject("years", yearService.getAllYear(family.getBudget().getId()));
         modelAndView.setViewName("index");
         return modelAndView;
@@ -80,12 +76,4 @@ public class BudgetController {
         modelAndView.setViewName("resultCalculate");
         return modelAndView;
     }
-
-//    @GetMapping ("/allFamily")
-//    public ModelAndView getAllFamily(ModelAndView modelAndView){
-//        List<Family> all = familyService.findAll();
-//        modelAndView.addObject("AllFamily",familyService.findAll());
-//        modelAndView.setViewName("/allFamily");
-//        return modelAndView;
-//    }
 }
