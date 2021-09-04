@@ -16,15 +16,15 @@
 </div>
 <h3><spring:message code="registration"/></h3>
 <form method="post">
-    <label><spring:message code="login"/></label><br>
+    <label><b><spring:message code="login"/></b></label><br>
     <input type="text" required placeholder="<spring:message code="login"/>" name="login"><br>
 
-    <label><fmt:message key="password"/></label><br>
+    <label><b><fmt:message key="password"/></b></label><br>
     <input type="text" required placeholder="<spring:message code="password"/>" name="password"><br>
 
-    <input class="button" type="submit" value="<spring:message code="registration"/>"/>
+    <input class="btn4" type="submit" value="<spring:message code="registration"/>"/>
 
-    <a href="start" class="button"><spring:message code="back"/></a>
+    <a href="start" class="btn3"><spring:message code="back"/></a>
 </form>
 
 </body>

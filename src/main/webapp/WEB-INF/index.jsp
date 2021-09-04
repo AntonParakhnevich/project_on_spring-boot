@@ -17,13 +17,13 @@
 
 </div>
 
-<p><spring:message code="login"/>: ${family.login}</p>
-<p><spring:message code="accumulations"/>: ${totalAccumulation}</p>
-<p><spring:message code="years"/>:</p>
+<h4><spring:message code="login"/>: ${family.login}</h4>
+<h4><spring:message code="accumulations"/>: ${totalAccumulation}</h4>
+<h4><spring:message code="years"/>:</h4>
 <c:forEach items="${years}" var="year">
     <tr>
         <th>
-            <a href="${pageContext.request.contextPath}/year?year=${year.id}">${year.year}</a>
+            <a class="btn1" href="${pageContext.request.contextPath}/year?year=${year.id}">${year.year}</a>
         </th>
     </tr>
 </c:forEach>
@@ -34,7 +34,7 @@
     </c:if>
 </c:forEach>
 <p>
-    <a href="createYear"><spring:message code="create"/></a>
-    <a href="calculate"><spring:message code="calculation"/></a>
+    <a class="btn3" href="createYear"><spring:message code="create"/></a>
+    <a class="btn3" href="calculate"><spring:message code="calculation"/></a>
 </p>
 </body>

@@ -4,6 +4,7 @@ import com.example.budjet_spring.entity.Budget;
 import com.example.budjet_spring.entity.Family;
 import com.example.budjet_spring.entity.Role;
 import com.example.budjet_spring.repositories.FamilyRepository;
+import com.example.budjet_spring.repositories.RoleRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -27,6 +28,7 @@ import java.util.stream.Collectors;
 public class FamilyServiceImpl implements FamilyService {
 
     private final FamilyRepository familyRepository;
+    private final RoleRepository roleRepository;
     private final PasswordEncoder passwordEncoder;
 
     public Family getByLoginAndPassword(String login, String password) {
@@ -46,17 +48,13 @@ public class FamilyServiceImpl implements FamilyService {
                 .password(passwordEncoder.encode(password))
                 .budget(budget)
                 .build();
-        family.addRole("user");
+        family.addRole(roleRepository.findByName("user"));
         budget.setFamily(family);
         familyRepository.save(family);
     }
 
     public Family findByLogin(String login){
         return familyRepository.findByLogin(login);
-    }
-
-    public List<Family> findAll(){
-        return  familyRepository.findAll();
     }
 
 }

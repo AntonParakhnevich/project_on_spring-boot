@@ -31,6 +31,7 @@ public class StartController {
 
     private final FamilyServiceImpl familyService;
     private final YearServiceImpl yearService;
+    private final PasswordEncoder passwordEncoder;
 
     @GetMapping({"/start", "/"})
     public String start() {

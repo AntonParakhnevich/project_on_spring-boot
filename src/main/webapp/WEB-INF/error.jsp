@@ -10,7 +10,7 @@
     <h1>Ошибка</h1>
     <br>
     <br>
-    <a href="${pageContext.request.contextPath}/start">На главную</a>
+    <a href="${pageContext.request.contextPath}/index">На главную</a>
 </div>
 </body>
 </html>

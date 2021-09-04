@@ -9,14 +9,14 @@
 </head>
 <body>
 <div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a class="btn2" href="${pageContext.request.contextPath}/createCost?language=en_US"><span>Eng</span></a>
+    <a class="btn2" href="${pageContext.request.contextPath}/createCost?idMonth=${idMonth}&year=${year}&language=en_US"><span>Eng</span></a>
 
-    <a class="btn2" href="${pageContext.request.contextPath}/createCost?language=ru_RU"><span>Rus</span></a>
+    <a class="btn2" href="${pageContext.request.contextPath}/createCost?idMonth=${idMonth}&year=${year}&language=ru_RU"><span>Rus</span></a>
 
 </div>
 
-<h3><spring:message code="newCategoryCost"/></h3>
-<form method="post">
+<h3 class="text-center"><spring:message code="newCategoryCost"/></h3>
+<form class="text-center" method="post">
 
     <label><spring:message code="name"/></label><br>
     <input required placeholder="<spring:message code="name"/>" name="name"/><br>
@@ -24,7 +24,10 @@
     <input required placeholder="<spring:message code="amount"/>" name="amount" type="number" min="1"/><br>
     <label><spring:message code="binding"/></label><br>
     <input required placeholder="<spring:message code="binding"/>" name="binding" type="number" min="1" max="5"/><br>
-    <input type="submit" value="<spring:message code="create"/>"/>
+<%--    <input type="submit" value="<spring:message code="create"/>"/>--%>
+
+    <p></p>
+    <input class="btn3" type="submit" value="<spring:message code="create"/> "/>
 </form>
 </body>
 </html>

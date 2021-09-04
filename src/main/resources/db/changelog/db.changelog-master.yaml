@@ -2,7 +2,7 @@ databaseChangeLog:
   - logicalFilePath: db/changelog/db.changelog-lesson1.yaml
   - changeSet:
       id: 1
-      author: your_liquibase_username
+      author: Anton.P
       changes:
         - createTable:
             tableName: family
@@ -13,19 +13,14 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
                   name: login
                   type: varchar(255)
-                  constraints:
-                    unique: true
-                    nullable: false
               - column:
                   name: password
                   type: varchar(255)
-                  constraints:
-                    nullable: false
-        -createTable:
+
+        - createTable:
             tableName: budget
             columns:
               - column:
@@ -34,15 +29,246 @@ databaseChangeLog:
                   autoIncrement: true
                   constraints:
                     primaryKey: true
-                    nullable: false
               - column:
-                  name: totalAccumulation
+                  name: total_accumulation
                   type: int(255)
+              - column:
+                  name: family_id
+                  type: BIGINT(255)
                   constraints:
-                    unique: true
-                    nullable: false
+                    foreignKeyName: family_id
+                    references: family(id)
+
+        - createTable:
+            tableName: year
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: year
+                  type: int(255)
+              - column:
+                  name: budget_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: budget_id
+                    references: budget(id)
+
+        - createTable:
+            tableName: expenses
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: total_expenses
+                  type: int(255)
+
+        - createTable:
+            tableName: incomes
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: total_income
+                  type: int(255)
+
+        - createTable:
+            tableName: category_income
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: value
+                  type: int(255)
+              - column:
+                  name: income_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: income_id
+                    references: incomes(id)
+
+        - createTable:
+            tableName: category_cost
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: binding
+                  type: int(255)
+              - column:
+                  name: price
+                  type: int(255)
+              - column:
+                  name: cost_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: cost_id
+                    references: expenses(id)
+
+        - createTable:
+            tableName: months
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+              - column:
+                  name: expenses_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: expenses_id
+                    references: expenses(id)
+              - column:
+                  name: income_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: income1_id
+                    references: incomes(id)
+              - column:
+                  name: year_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: year_id
+                    references: year(id)
+
+
+        - createTable:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  type: BIGINT
+                  autoIncrement: true
+                  constraints:
+                    primaryKey: true
+              - column:
+                  name: name
+                  type: varchar(255)
+
+
+        - createTable:
+            tableName: family_roles
+            columns:
+              - column:
+                  name: family_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: family1_id
+                    references: family(id)
+              - column:
+                  name: role_id
+                  type: BIGINT(255)
+                  constraints:
+                    foreignKeyName: role_id
+                    references: roles(id)
+
+  - changeSet:
+      id: 2
+      author: Anton.P
+      comment: "Add roles"
+      changes:
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: name
+                  value: "admin"
+        - insert:
+            tableName: roles
+            columns:
+              - column:
+                  name: id
+                  value: 2
+              - column:
+                  name: name
+                  value: "user"
+
+        - insert:
+            tableName: family
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: login
+                  value: "admin"
               - column:
                   name: password
-                  type: varchar(255)
-                  constraints:
-                    nullable: false
+                  value: "$2a$10$ciURas3OfOIOUweClQk8Gu2dICGno4gCIqKz11To5Hf/4M4qurBwa"
+
+        - insert:
+            tableName: budget
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: total_accumulation
+                  value: 0
+              - column:
+                  name: family_id
+                  value: 1
+
+        - insert:
+            tableName: incomes
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: total_income
+                  value: 0
+
+        - insert:
+            tableName: expenses
+            columns:
+              - column:
+                  name: id
+                  value: 1
+              - column:
+                  name: total_expenses
+                  value: 0
+
+        - insert:
+            tableName: family_roles
+            columns:
+              - column:
+                  name: family_id
+                  value: 1
+              - column:
+                  name: role_id
+                  value: 1

@@ -8,29 +8,30 @@
     <link rel="stylesheet" type="text/css" href="../style.css">
 </head>
 <body>
-<div style="text-align: right;padding:5px;margin:5px 0px;background:#ccc;">
-    <a class="btn2" href="${pageContext.request.contextPath}/resultCalculate?language=en_US"><span>Eng</span></a>
-
-    <a class="btn2" href="${pageContext.request.contextPath}/resultCalculate?language=ru_RU"><span>Rus</span></a>
-
-</div>
-<h3><spring:message code="calculationAccumulation"/></h3>
-<table>
+<h3 class="text-center"><spring:message code="calculationAccumulation"/></h3>
+<table class="resp-tab">
+    <thead>
     <tr>
         <th><spring:message code="totalYears"/></th>
         <th><spring:message code="incomes"/></th>
         <th><spring:message code="costs"/></th>
         <th><spring:message code="accumulations"/></th>
     </tr>
+    </thead>
+    <tbody>
     <tr>
-        <th>${years}</th>
-        <th>${income}</th>
-        <th>${cost}</th>
-        <th>${accumulation}</th>
+        <td>${years}</td>
+        <td>${income}</td>
+        <td>${cost}</td>
+        <td>${accumulation}</td>
     </tr>
+    </tbody>
 </table>
+<p></p>
+<div class="text-center">
+    <a class="btn3" href="calculate"><spring:message code="back"/> </a>
+</div>
 
-<a href="calculate" style="display: inline"><spring:message code="back"/> </a>
 </body>
 </html>
 

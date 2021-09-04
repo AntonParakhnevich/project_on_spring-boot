@@ -68,8 +68,8 @@ public class Family implements Serializable {
                 '}';
     }
 
-    public void addRole(String nameRole){
-        Role role = Role.builder().name(nameRole).build();
+    public void addRole(Role role){
+//        Role role = Role.builder().name(nameRole).build();
         roles.add(role);
     }
 }

@@ -16,37 +16,39 @@
     <a class="btn2" href="${pageContext.request.contextPath}/year?language=ru_RU&year=${year}"><span>Rus</span></a>
 
 </div>
-<table>
+
+<table class="resp-tab">
+    <thead>
     <tr>
         <th><spring:message code="month"/></th>
         <th><spring:message code="incomes"/></th>
         <th><spring:message code="costs"/></th>
         <th><spring:message code="accumulations"/></th>
     </tr>
-
+    </thead>
+    <tbody>
     <c:forEach items="${months}" var="month">
     <tr>
-        <th>
-            <a href="${pageContext.request.contextPath}/month?idMonth=${month.id}&year=${year}"><spring:message
-                    code="${month.name}"/></a>
-        </th>
-        <th>${month.income.calculationTotalIncome()}</th>
-        <th>${month.expenses.calculationTotalExpenses()}</th>
-        <th>${month.calculationAccumulationInMonth()}</th>
         <td>
-            <form method="post" action='<c:url value="/deleteMonth?idMonth=${month.id}&year=${year}" />'
-                  style="display:inline;">
-                <input type="hidden" name="id" value="${month.id}">
-                <input type="submit" value="<spring:message code="delete"/>">
-            </form>
+            <a class="btn-year" href="${pageContext.request.contextPath}/month?idMonth=${month.id}&year=${year}"><spring:message
+                    code="${month.name}"/></a>
         </td>
+        <td>${month.income.calculationTotalIncome()}</td>
+        <td>${month.expenses.calculationTotalExpenses()}</td>
+        <td>${month.calculationAccumulationInMonth()}</td>
         </c:forEach>
     </tr>
+    </tbody>
 </table>
-<a href="createMonth?year=${year}"><spring:message code="create"/></a>
+<p></p>
+<div class="text-center">
+    <a class="btn3" href="createMonth?year=${year}"><spring:message code="create"/></a>
+</div>
 
-<form method="post" action='<c:url value="/backIndex"/>' style="display:inline;">
-    <input type="submit" value="<spring:message code="back"/>">
+
+
+<form method="post" action='<c:url value="/backIndex"/>' style="text-align: right">
+    <input type="submit" class="btn3" value="<spring:message code="back"/>">
 </form>
 </body>
 </html>
