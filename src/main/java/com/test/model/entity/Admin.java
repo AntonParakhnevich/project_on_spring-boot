@@ -28,21 +28,21 @@ public class Admin {
   @JoinColumn(name = "user_account_id")
   private UserAccount userAccount;
 
-  @Column(name = "studio_id")
-  private Long studioId;
+  @Column(name = "company_id")
+  private Long companyId;
   @ManyToOne
-  @JoinColumn(name = "studio_id", updatable = false, insertable = false)
+  @JoinColumn(name = "company_id", updatable = false, insertable = false)
   @JsonBackReference
-  private Studio studio;
+  private Company company;
 
   public Admin() {
   }
 
-  public Admin(Long id, Long userAccountId, UserAccount userAccount, Long studioId) {
+  public Admin(Long id, Long userAccountId, UserAccount userAccount, Long companyId) {
     this.id = id;
     this.userAccountId = userAccountId;
     this.userAccount = userAccount;
-    this.studioId = studioId;
+    this.companyId = companyId;
   }
 
   public Long getId() {
@@ -69,20 +69,20 @@ public class Admin {
     this.userAccount = userAccount;
   }
 
-  public Long getStudioId() {
-    return studioId;
+  public Long getCompanyId() {
+    return companyId;
   }
 
-  public void setStudioId(Long studioId) {
-    this.studioId = studioId;
+  public void setCompanyId(Long companyId) {
+    this.companyId = companyId;
   }
 
-  public Studio getStudio() {
-    return studio;
+  public Company getCompany() {
+    return company;
   }
 
-  public void setStudio(Studio studio) {
-    this.studio = studio;
+  public void setCompany(Company company) {
+    this.company = company;
   }
 
   @Override
@@ -95,13 +95,13 @@ public class Admin {
     }
     Admin admin = (Admin) o;
     return Objects.equals(id, admin.id) && Objects.equals(userAccountId, admin.userAccountId)
-        && Objects.equals(userAccount, admin.userAccount) && Objects.equals(studioId, admin.studioId)
-        && Objects.equals(studio, admin.studio);
+        && Objects.equals(userAccount, admin.userAccount) && Objects.equals(companyId, admin.companyId)
+        && Objects.equals(company, admin.company);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, userAccountId, userAccount, studioId, studio);
+    return Objects.hash(id, userAccountId, userAccount, companyId, company);
   }
 
   @Override
@@ -110,8 +110,8 @@ public class Admin {
         "id=" + id +
         ", userAccountId=" + userAccountId +
         ", userAccount=" + userAccount +
-        ", studioId=" + studioId +
-        ", studio=" + studio +
+        ", companyId=" + companyId +
+        ", company=" + company +
         '}';
   }
 }

@@ -19,7 +19,7 @@ public class CarController {
 
   @PostMapping("/")
   public Long create(@RequestBody CreateCarRequest request) {
-    return carService.create(request.getNumber(), request.getStudioId(), request.getActive(),
+    return carService.create(request.getNumber(), request.getCompanyId(), request.getActive(),
         request.getInsuranceDate(), request.getTechnicalInspectionDate());
   }
 }

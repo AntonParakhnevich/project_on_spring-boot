@@ -19,12 +19,12 @@ public class Car {
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
   private Long id;
-  @Column(name = "studio_id")
-  private Long studioId;
+  @Column(name = "company_id")
+  private Long companyId;
   @ManyToOne
-  @JoinColumn(name = "studio_id", updatable = false, insertable = false)
+  @JoinColumn(name = "company_id", updatable = false, insertable = false)
   @JsonBackReference
-  private Studio studio;
+  private Company company;
   @Column
   private String number;
   @Column(name = "is_active")
@@ -34,10 +34,10 @@ public class Car {
   @Column
   private LocalDate technicalInspectionDate;
 
-  public Car(Long studioId, Studio studio, String number, Boolean isActive, LocalDate insuranceDate,
+  public Car(Long companyId, Company company, String number, Boolean isActive, LocalDate insuranceDate,
       LocalDate technicalInspectionDate) {
-    this.studioId = studioId;
-    this.studio = studio;
+    this.companyId = companyId;
+    this.company = company;
     this.number = number;
     this.isActive = isActive;
     this.insuranceDate = insuranceDate;
@@ -54,20 +54,20 @@ public class Car {
   public void setId(Long id) {
     this.id = id;
   }
-  public Long getStudioId() {
-    return studioId;
+  public Long getCompanyId() {
+    return companyId;
   }
 
-  public void setStudioId(Long studioId) {
-    this.studioId = studioId;
+  public void setCompanyId(Long companyId) {
+    this.companyId = companyId;
   }
 
-  public Studio getStudio() {
-    return studio;
+  public Company getCompany() {
+    return company;
   }
 
-  public void setStudio(Studio studio) {
-    this.studio = studio;
+  public void setCompany(Company company) {
+    this.company = company;
   }
 
   public String getNumber() {
@@ -112,22 +112,22 @@ public class Car {
     }
     Car car = (Car) o;
     return Objects.equals(id, car.id) && Objects.equals(
-        studioId, car.studioId) && Objects.equals(studio, car.studio) && Objects.equals(number,
+        companyId, car.companyId) && Objects.equals(company, car.company) && Objects.equals(number,
         car.number) && Objects.equals(isActive, car.isActive) && Objects.equals(insuranceDate,
         car.insuranceDate) && Objects.equals(technicalInspectionDate, car.technicalInspectionDate);
   }
 
   @Override
   public int hashCode() {
-    return Objects.hash(id, studioId, studio, number, isActive, insuranceDate, technicalInspectionDate);
+    return Objects.hash(id, companyId, company, number, isActive, insuranceDate, technicalInspectionDate);
   }
 
   @Override
   public String toString() {
     return "Car{" +
         "id=" + id +
-        ", studioId=" + studioId +
-        ", studio=" + studio +
+        ", companyId=" + companyId +
+        ", company=" + company +
         ", number='" + number + '\'' +
         ", isActive=" + isActive +
         ", insuranceDate=" + insuranceDate +

@@ -12,6 +12,7 @@ import org.springframework.security.core.userdetails.User;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 
 @Service
@@ -21,12 +22,15 @@ public class UserAccountService implements UserDetailsService {
   private final UserAccountRepository userAccountRepository;
   private final RoleRepository roleRepository;
   private final UserAccountValidationService userAccountValidationService;
+  private final PasswordEncoder passwordEncoder;
 
   public UserAccountService(UserAccountRepository repository,
-      RoleRepository roleRepository, UserAccountValidationService userAccountValidationService) {
+      RoleRepository roleRepository, UserAccountValidationService userAccountValidationService,
+      PasswordEncoder passwordEncoder) {
     this.userAccountRepository = repository;
     this.roleRepository = roleRepository;
     this.userAccountValidationService = userAccountValidationService;
+    this.passwordEncoder = passwordEncoder;
   }
 
   public UserAccount create(CreateUserAccountModel model) {
@@ -36,7 +40,7 @@ public class UserAccountService implements UserDetailsService {
     userAccount.setName(model.getName());
     userAccount.setPhone(model.getPhone());
     userAccount.setRole(role);
-    userAccount.setPassword(model.getPassword());
+    userAccount.setPassword(passwordEncoder.encode(model.getPassword()));
     userAccount.setEmail(model.getEmail());
     userAccount.setRoleId(role.getId());
 

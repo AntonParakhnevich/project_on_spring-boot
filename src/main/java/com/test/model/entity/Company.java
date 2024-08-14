@@ -13,8 +13,8 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "studio")
-public class Studio {
+@Table(name = "company")
+public class Company {
 
   @Id
   @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,11 +25,11 @@ public class Studio {
   private String phone;
   @Column
   private String address;
-  @OneToMany(mappedBy = "studio", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
   @JsonManagedReference
   private List<Admin> admins;
   @Column
-  @OneToMany(mappedBy = "studio", fetch = FetchType.LAZY)
+  @OneToMany(mappedBy = "company", fetch = FetchType.LAZY)
   @JsonManagedReference
   private List<Car> cars;
 
@@ -89,10 +89,10 @@ public class Studio {
     if (o == null || getClass() != o.getClass()) {
       return false;
     }
-    Studio studio = (Studio) o;
-    return Objects.equals(id, studio.id) && Objects.equals(name, studio.name)
-        && Objects.equals(phone, studio.phone) && Objects.equals(address, studio.address)
-        && Objects.equals(admins, studio.admins) && Objects.equals(cars, studio.cars);
+    Company company = (Company) o;
+    return Objects.equals(id, company.id) && Objects.equals(name, company.name)
+        && Objects.equals(phone, company.phone) && Objects.equals(address, company.address)
+        && Objects.equals(admins, company.admins) && Objects.equals(cars, company.cars);
   }
 
   @Override
@@ -102,7 +102,7 @@ public class Studio {
 
   @Override
   public String toString() {
-    return "Studio{" +
+    return "Company{" +
         "id=" + id +
         ", name='" + name + '\'' +
         ", phone='" + phone + '\'' +

@@ -14,12 +14,12 @@ public class CarService {
     this.carRepository = carRepository;
   }
 
-  public Long create(String number, Long studioId, Boolean isActive, LocalDate insuranceDate,
+  public Long create(String number, Long companyId, Boolean isActive, LocalDate insuranceDate,
       LocalDate technicalInspectionDate) {
 
     Car car = new Car();
     car.setNumber(number);
-    car.setStudioId(studioId);
+    car.setCompanyId(companyId);
     car.setActive(isActive);
     car.setInsuranceDate(insuranceDate);
     car.setTechnicalInspectionDate(technicalInspectionDate);

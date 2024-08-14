@@ -1,11 +1,11 @@
 package com.test.repository;
 
-import com.test.model.entity.Studio;
+import com.test.model.entity.Company;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.stereotype.Repository;
 
 @Repository
-public interface StudioRepository extends JpaRepository<Studio, Long> {
+public interface CompanyRepository extends JpaRepository<Company, Long> {
 
   Integer countByPhoneAndName(String phone, String name);
 }

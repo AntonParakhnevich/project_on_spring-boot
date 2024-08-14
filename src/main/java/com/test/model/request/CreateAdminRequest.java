@@ -7,15 +7,15 @@ public class CreateAdminRequest {
   private String name;
   private String phone;
   private RoleName role;
-  private Long studioId;
+  private Long companyId;
   private String password;
   private String email;
 
-  public CreateAdminRequest(String name, String phone, RoleName role, Long studioId, String password, String email) {
+  public CreateAdminRequest(String name, String phone, RoleName role, Long companyId, String password, String email) {
     this.name = name;
     this.phone = phone;
     this.role = role;
-    this.studioId = studioId;
+    this.companyId = companyId;
     this.password = password;
     this.email = email;
   }
@@ -47,12 +47,12 @@ public class CreateAdminRequest {
     this.role = role;
   }
 
-  public Long getStudioId() {
-    return studioId;
+  public Long getCompanyId() {
+    return companyId;
   }
 
-  public void setStudioId(Long studioId) {
-    this.studioId = studioId;
+  public void setCompanyId(Long companyId) {
+    this.companyId = companyId;
   }
 
   public String getPassword() {

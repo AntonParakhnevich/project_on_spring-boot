@@ -23,9 +23,8 @@ public class AdminService {
         request.getRole(), request.getPassword(), request.getEmail());
     UserAccount userAccount = userAccountService.create(createUserAccountModel);
     Admin admin = new Admin();
-//    admin.setUserAccountId(userAccountId);
     admin.setUserAccount(userAccount);
-    admin.setStudioId(request.getStudioId());
+    admin.setCompanyId(request.getCompanyId());
     adminRepository.save(admin);
   }
 }

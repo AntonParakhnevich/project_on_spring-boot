@@ -1,18 +1,18 @@
 package com.test.model.request;
 
-public class CreateStudioRequest {
+public class CreateCompanyRequest {
 
   private String name;
   private String phone;
   private String address;
 
-  public CreateStudioRequest(String name, String phone, String address) {
+  public CreateCompanyRequest(String name, String phone, String address) {
     this.name = name;
     this.phone = phone;
     this.address = address;
   }
 
-  public CreateStudioRequest() {
+  public CreateCompanyRequest() {
   }
 
   public String getName() {

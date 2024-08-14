@@ -5,15 +5,15 @@ import java.time.LocalDate;
 public class CreateCarRequest {
 
   private String number;
-  private Long studioId;
+  private Long companyId;
   private Boolean isActive;
   private LocalDate insuranceDate;
   private LocalDate technicalInspectionDate;
 
-  public CreateCarRequest(String number, Long studioId, Boolean isActive, LocalDate insuranceDate,
+  public CreateCarRequest(String number, Long companyId, Boolean isActive, LocalDate insuranceDate,
       LocalDate technicalInspectionDate) {
     this.number = number;
-    this.studioId = studioId;
+    this.companyId = companyId;
     this.isActive = isActive;
     this.insuranceDate = insuranceDate;
     this.technicalInspectionDate = technicalInspectionDate;
@@ -30,12 +30,12 @@ public class CreateCarRequest {
     this.number = number;
   }
 
-  public Long getStudioId() {
-    return studioId;
+  public Long getCompanyId() {
+    return companyId;
   }
 
-  public void setStudioId(Long studioId) {
-    this.studioId = studioId;
+  public void setCompanyId(Long companyId) {
+    this.companyId = companyId;
   }
 
   public Boolean getActive() {

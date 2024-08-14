@@ -25,7 +25,7 @@
     <property name="hibernate.hbm2ddl.auto">update</property>
 
     <mapping class="com.test.model.entity.UserAccount"/>
-    <mapping class="com.test.model.entity.Studio"/>
+    <mapping class="com.test.model.entity.Company"/>
     <mapping class="com.test.model.entity.Car"/>
     <mapping class="com.test.model.entity.Admin"/>
     <mapping class="com.test.model.entity.Customer"/>
