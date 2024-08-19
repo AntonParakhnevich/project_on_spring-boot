@@ -43,7 +43,7 @@ public class RegistrationController {
     }
 
     customerService.create(request);
-    userService.loadUserByUsername(request.getName());
+//    userService.loadUserByUsername(request.getEmail());
 
     return "redirect:/login";
   }

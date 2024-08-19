@@ -29,8 +29,8 @@ public class UserValidationService implements Validator {
       errors.rejectValue("name", "Size.userForm.username");
     }
 
-    if (userAccountService.getByName(user.getName()) != null) {
-      errors.rejectValue("name", "Duplicate.userForm.username");
+    if (userAccountService.getByEmail(user.getEmail()) != null) {
+      errors.rejectValue("email", "Duplicate.userForm.username");
     }
 
     ValidationUtils.rejectIfEmptyOrWhitespace(errors, "password", "Required");

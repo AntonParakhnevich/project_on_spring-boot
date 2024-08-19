@@ -9,5 +9,5 @@ public interface UserAccountRepository extends JpaRepository<UserAccount, Long> 
 
   Integer countByPhone(String phone);
 
-  UserAccount findByName(String name);
+  UserAccount findByEmail(String email);
 }

@@ -32,6 +32,7 @@ public class AdminController {
   @GetMapping
   public String init(Model model, @AuthenticationPrincipal UserDetails userDetails) {
     model.addAttribute("userName", userDetails.getUsername());
+    model.addAttribute("companies", companyService.getAll());
     return "admin";
   }
 

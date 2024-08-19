@@ -1,5 +1,6 @@
 package com.test.service;
 
+import com.test.model.entity.Admin;
 import com.test.model.entity.Company;
 import com.test.repository.CompanyRepository;
 import java.util.List;
@@ -29,6 +30,11 @@ public class CompanyService {
 
     companyRepository.save(company);
     return "success";
+  }
+
+  public Company getById(Long id) {
+    return companyRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Company with id=" + id + " not found"));
   }
 
   public List<Company> getAll() {

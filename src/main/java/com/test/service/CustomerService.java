@@ -29,4 +29,19 @@ public class CustomerService {
     customer.setUserAccount(userAccount);
     customerRepository.save(customer);
   }
+
+  public Customer getByEmail(String email) {
+    return customerRepository.findByEmail(email);
+  }
+
+  public Customer getById(Long id) {
+    return customerRepository.findById(id)
+        .orElseThrow(() -> new IllegalArgumentException("Customer with id=" + id + " not found"));
+  }
+
+  @Transactional
+  public void delete(Customer customer) {
+    customerRepository.delete(customer);
+    userAccountService.deleteById(customer.getUserAccountId());
+  }
 }

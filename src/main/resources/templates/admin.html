@@ -27,6 +27,10 @@
     <button type="submit">Create company</button>
   </form>
 
+  <div th:each="company : ${companies}">
+    <a th:href="@{'/companies/'+${company.getId()}}" th:text="${company.getName()}">Company</a>
+  </div>
+
 
 </div>
 

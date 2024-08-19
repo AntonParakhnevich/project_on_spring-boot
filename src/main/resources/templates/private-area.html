@@ -18,6 +18,10 @@
     <button type="submit">Logout</button>
   </form>
 
+  <form th:action="@{/customers/{id}(id=${customer?.getId()})}" method="post" th:Object="${customer}">
+    <button type="submit">Delete</button>
+  </form>
+
 </div>
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
 </body>

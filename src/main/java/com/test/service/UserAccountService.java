@@ -57,13 +57,17 @@ public class UserAccountService implements UserDetailsService {
         .orElse(null);
   }
 
-  public UserAccount getByName(String name) {
-    return userAccountRepository.findByName(name);
+  public UserAccount getByEmail(String email) {
+    return userAccountRepository.findByEmail(email);
+  }
+
+  public void deleteById(Long id) {
+    userAccountRepository.deleteById(id);
   }
 
   @Override
-  public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-    return Optional.ofNullable(userAccountRepository.findByName(username))
+  public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
+    return Optional.ofNullable(userAccountRepository.findByEmail(email))
         .map(userAccount -> new User(userAccount.getEmail(), userAccount.getPassword(),
             Collections.singletonList(userAccount.getRole().getName())))
         .orElseThrow(() -> new IllegalArgumentException("user not found"));
