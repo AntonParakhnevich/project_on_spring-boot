@@ -1,6 +1,6 @@
 package com.test.controller;
 
-import com.test.model.entity.Company;
+import com.test.model.CompanyModel;
 import com.test.model.request.CreateCompanyRequest;
 import com.test.service.CompanyService;
 import org.springframework.ui.Model;
@@ -28,7 +28,7 @@ public class CompanyController {
   }
 
   @GetMapping("/{id}")
-  public Company getById(@PathVariable Long id) {
+  public CompanyModel getById(@PathVariable Long id) {
     return companyService.getById(id);
   }
 }

@@ -1,6 +1,8 @@
 package com.test.service;
 
+import com.test.mapper.UserAccountMapper;
 import com.test.model.CreateUserAccountModel;
+import com.test.model.UserAccountModel;
 import com.test.model.entity.Role;
 import com.test.model.entity.UserAccount;
 import com.test.repository.RoleRepository;
@@ -23,14 +25,16 @@ public class UserAccountService implements UserDetailsService {
   private final RoleRepository roleRepository;
   private final UserAccountValidationService userAccountValidationService;
   private final PasswordEncoder passwordEncoder;
+  private final UserAccountMapper userAccountMapper;
 
   public UserAccountService(UserAccountRepository repository,
       RoleRepository roleRepository, UserAccountValidationService userAccountValidationService,
-      PasswordEncoder passwordEncoder) {
+      PasswordEncoder passwordEncoder, UserAccountMapper userAccountMapper) {
     this.userAccountRepository = repository;
     this.roleRepository = roleRepository;
     this.userAccountValidationService = userAccountValidationService;
     this.passwordEncoder = passwordEncoder;
+    this.userAccountMapper = userAccountMapper;
   }
 
   public UserAccount create(CreateUserAccountModel model) {
@@ -52,13 +56,16 @@ public class UserAccountService implements UserDetailsService {
     return userAccountRepository.save(userAccount);
   }
 
-  public UserAccount getById(Long id) {
+  public UserAccountModel getById(Long id) {
     return userAccountRepository.findById(id)
-        .orElse(null);
+        .map(userAccountMapper::toModel)
+        .orElseThrow(() -> new IllegalArgumentException("User not found with id=" + id));
   }
 
-  public UserAccount getByEmail(String email) {
-    return userAccountRepository.findByEmail(email);
+  public UserAccountModel getByEmail(String email) {
+    return Optional.ofNullable(userAccountRepository.findByEmail(email))
+        .map(userAccountMapper::toModel)
+        .orElseThrow(() -> new IllegalArgumentException("User not found with email=" + email));
   }
 
   public void deleteById(Long id) {

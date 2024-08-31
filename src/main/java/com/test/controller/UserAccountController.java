@@ -1,5 +1,6 @@
 package com.test.controller;
 
+import com.test.model.UserAccountModel;
 import com.test.model.entity.UserAccount;
 import com.test.service.UserAccountService;
 import java.util.Optional;
@@ -24,7 +25,7 @@ public class UserAccountController {
   }
 
   @GetMapping("/{id}")
-  public UserAccount getById(@PathVariable("id") Long id) {
+  public UserAccountModel getById(@PathVariable("id") Long id) {
     return userAccountService.getById(id);
   }
 
@@ -33,16 +34,16 @@ public class UserAccountController {
 
   }
 
-  @PostMapping("/{id}")
-  public String delete(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
-    String username = userDetails.getUsername();
-    return Optional.ofNullable(userAccountService.getByEmail(username))
-        .filter(user -> user.getId().equals(id))
-        .map(user -> {
-              userAccountService.deleteById(user.getId());
-              return "redirect:/logout";
-            }
-        )
-        .orElse("private-area");
-  }
+//  @PostMapping("/{id}")
+//  public String delete(@PathVariable Long id, @AuthenticationPrincipal UserDetails userDetails) {
+//    String username = userDetails.getUsername();
+//    return Optional.ofNullable(userAccountService.getByEmail(username))
+//        .filter(user -> user.getId().equals(id))
+//        .map(user -> {
+//              userAccountService.deleteById(user.getId());
+//              return "redirect:/logout";
+//            }
+//        )
+//        .orElse("private-area");
+//  }
 }

@@ -107,7 +107,7 @@ public class Company {
         ", name='" + name + '\'' +
         ", phone='" + phone + '\'' +
         ", address='" + address + '\'' +
-        ", userAccounts=" + admins +
+//        ", admins=" + admins +
         ", cars=" + cars +
         '}';
   }

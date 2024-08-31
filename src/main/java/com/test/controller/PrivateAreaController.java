@@ -1,5 +1,7 @@
 package com.test.controller;
 
+import com.test.model.CarModel;
+import com.test.model.CustomerModel;
 import com.test.model.entity.Customer;
 import com.test.model.entity.UserAccount;
 import com.test.service.CustomerService;
@@ -23,7 +25,7 @@ public class PrivateAreaController {
 
   @GetMapping()
   public String init(Model model, @AuthenticationPrincipal UserDetails userDetails) {
-    Customer customer = customerService.getByEmail(userDetails.getUsername());
+    CustomerModel customer = customerService.getByEmail(userDetails.getUsername());
     model.addAttribute("userName", userDetails.getUsername());
     model.addAttribute("customer", customer);
     return "private-area";

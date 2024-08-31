@@ -111,7 +111,7 @@ public class Admin {
         ", userAccountId=" + userAccountId +
         ", userAccount=" + userAccount +
         ", companyId=" + companyId +
-        ", company=" + company +
+//        ", company=" + company +
         '}';
   }
 }
